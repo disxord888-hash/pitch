@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pich - プロフェッショナル・ピッチディテクター</title>
+    <meta name="description" content="20000Hzまで対応した高精度ピッチ検出ツール。オフセット設定、ボーカル音域表示機能搭載。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">PICH</div>
+            <div class="status-badge" id="status-badge">READY</div>
+        </header>
+
+        <main>
+            <section class="display-section">
+                <div class="note-display" id="note-display">--</div>
+                <div class="frequency-display">
+                    <span id="freq-value">0.00</span> <span class="unit">Hz</span>
+                </div>
+                <div class="vocal-range" id="vocal-range">---</div>
+            </section>
+
+            <section class="visualizer-section">
+                <canvas id="visualizer"></canvas>
+            </section>
+
+            <section class="controls-section">
+                <div class="control-group">
+                    <label for="offset-slider">ピッチ・オフセット (半音): <span id="offset-value">0</span></label>
+                    <input type="range" id="offset-slider" min="-12" max="12" value="0" step="1">
+                </div>
+
+                <div class="button-group">
+                    <button id="start-btn" class="primary-btn">マイクを開始</button>
+                    <button id="stop-btn" class="secondary-btn" disabled>停止</button>
+                </div>
+            </section>
+
+            <section class="info-section">
+                <div class="info-card">
+                    <h3>高周波対応</h3>
+                    <p>最大 20,000 Hz までの広い周波数帯域をカバーします。</p>
+                </div>
+                <div class="info-card">
+                    <h3>オフセット調整</h3>
+                    <p>移調楽器や特定のチューニングに合わせて -12〜+12 半音のオフセットが可能です。</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 PICH Pitch Detection System</p>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
