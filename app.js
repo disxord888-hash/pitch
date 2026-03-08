@@ -189,10 +189,10 @@ function getJapaneseVocalRange(noteNum) {
     const noteName = noteStrings[(noteNum % 12 + 12) % 12];
 
     const rangeMap = {
-        "-1": "LOWLOWLOWLOW",
-        "0": "LOWLOWLOW",
-        "1": "LOWLOW",
-        "2": "LOW",
+        "-1": "lowlowlowlow",
+        "0": "lowlowlow",
+        "1": "lowlow",
+        "2": "low",
         "3": "mid",
         "4": "hi",
         "5": "hihi",
