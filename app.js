@@ -185,26 +185,28 @@ function autoCorrelate(buf, sampleRate) {
 }
 
 function getJapaneseVocalRange(noteNum) {
-    const octave = Math.floor(noteNum / 12) - 1;
+    // 科学的ピッチ表記のオクターブ（Cが区切り）
+    const scientificOctave = Math.floor(noteNum / 12) - 1;
+    // 日本式表記のオクターブ（Aが区切り：A4がhiA、A3がmid2A...）
+    // AはCから9半音上なので、9引いて12で割る
+    const japaneseOctaveIndex = Math.floor((noteNum - 9) / 12);
     const noteName = noteStrings[(noteNum % 12 + 12) % 12];
 
     const rangeMap = {
-        "-1": "lowlowlowlow",
-        "0": "lowlowlow",
         "1": "lowlow",
         "2": "low",
-        "3": "mid",
-        "4": "hi",
-        "5": "hihi",
-        "6": "hihihi",
-        "7": "hihihihi",
-        "8": "hihihihihi",
-        "9": "hihihihihihi"
+        "3": "mid1",
+        "4": "mid2",
+        "5": "hi",
+        "6": "hihi",
+        "7": "hihihi",
+        "8": "hihihihi",
+        "9": "hihihihihi"
     };
 
-    let prefix = rangeMap[octave] || (octave < -1 ? "LOWLOWLOWLOW" : "hihihihihi");
+    let prefix = rangeMap[japaneseOctaveIndex] || (japaneseOctaveIndex < 1 ? "lowlowlow..." : "hihihi...");
 
-    return `${prefix}${noteName}/${noteName}${octave}`;
+    return `${prefix}${noteName} / ${noteName}${scientificOctave}`;
 }
 
 function draw() {
