@@ -193,13 +193,13 @@ function getJapaneseVocalRange(noteNum) {
         "0": "LOWLOWLOW",
         "1": "LOWLOW",
         "2": "LOW",
-        "3": "mid1",
-        "4": "mid2",
-        "5": "hi",
-        "6": "hihi",
-        "7": "hihihi",
-        "8": "hihihihi",
-        "9": "hihihihihi"
+        "3": "mid",
+        "4": "hi",
+        "5": "hihi",
+        "6": "hihihi",
+        "7": "hihihihi",
+        "8": "hihihihihi",
+        "9": "hihihihihihi"
     };
 
     let prefix = rangeMap[octave] || (octave < -1 ? "LOWLOWLOWLOW" : "hihihihihi");
