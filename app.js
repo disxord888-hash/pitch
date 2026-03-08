@@ -186,18 +186,23 @@ function autoCorrelate(buf, sampleRate) {
 
 function getJapaneseVocalRange(noteNum) {
     const octave = Math.floor(noteNum / 12) - 1;
-    const noteNames = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
-    const noteName = noteStrings[(noteNum % 12 + 12) % 12]; // noteStrings[noteNum % 12]
+    const noteName = noteStrings[(noteNum % 12 + 12) % 12];
 
-    let prefix = "";
-    if (octave <= 1) prefix = "LOWLOWLOW";
-    else if (octave === 2) prefix = "LOWLOW";
-    else if (octave === 3) prefix = "LOW";
-    else if (octave === 4) prefix = "mid1";
-    else if (octave === 5) prefix = "mid2";
-    else if (octave === 6) prefix = "hi";
-    else if (octave === 7) prefix = "hihi";
-    else if (octave >= 8) prefix = "hihihi";
+    const rangeMap = {
+        "-1": "LOWLOWLOWLOW",
+        "0": "LOWLOWLOW",
+        "1": "LOWLOW",
+        "2": "LOW",
+        "3": "mid1",
+        "4": "mid2",
+        "5": "hi",
+        "6": "hihi",
+        "7": "hihihi",
+        "8": "hihihihi",
+        "9": "hihihihihi"
+    };
+
+    let prefix = rangeMap[octave] || (octave < -1 ? "LOWLOWLOWLOW" : "hihihihihi");
 
     return `${prefix}${noteName}/${noteName}${octave}`;
 }
